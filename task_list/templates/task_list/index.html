@@ -1,0 +1,38 @@
+{% extends 'task_list/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Tasks</h1>
+            <ul class="list-group list-group-flush">
+                {% for task in tasks %}
+                    {% if task.completed == False %}
+                        <li class="list-group-item col-sm-8">
+                            {{ task.description }}
+                            <a href="{% url "completed" task.id %}" class="btn btn-primary btn-sm complete">Completed</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <div class="input-group">
+                <form method="post" action="">
+                    {% csrf_token %}
+
+                    <div class="form-group col-sm-4">
+                        {{ form.as_p }}
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Add task">
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h1>Completed Tasks</h1>
+            <ul class="list-group list-group-flush">
+                {% for c_task in completed_tasks %}
+                    <li class="list-group-item col-sm-8">{{ c_task.description }} <a href="{% url "delete" c_task.id %}" class="btn btn-danger btn-sm delete-task">Delete</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

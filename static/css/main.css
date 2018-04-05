@@ -1,0 +1,23 @@
+.navbar {
+    background-color: royalblue;
+}
+
+.navbar .navbar-brand {
+    color: white;
+}
+
+#navbarNav li a {
+    color: #ffffff;
+}
+
+.complete {
+    position: absolute;
+    right: 34px;
+    margin-left: 90px;
+}
+
+.delete-task {
+    position: absolute;
+    right: 34px;
+    margin-left: 90px;
+}
